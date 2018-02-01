@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//    session()->flash('danger','Your Subscrption ');
+    return view('pages.index');
 });
+
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin/create', function () {
+    return view('users.add');
+})->name('admin_create');
+
+Route::get('/admin/users', 'UsersController@index')->name('admin_users_list');
+Route::post('/admin/add', 'UsersController@add')->name('admin_add');
